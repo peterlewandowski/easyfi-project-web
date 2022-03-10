@@ -1,0 +1,12 @@
+.ant-layout-header {
+  height: 50px;
+  width: 400px;
+  padding: 0px;
+  background-color: darksalmon;
+  line-height: normal;
+}
+
+h1 {
+  text-align: left;
+  color: white;
+}
