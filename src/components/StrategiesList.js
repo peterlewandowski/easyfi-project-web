@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { List, Card, Button } from "antd";
+import { List, Card, Button, Space } from "antd";
+import { PoweroffOutlined } from '@ant-design/icons';
 
 export default function StrategiesList() {
   const [strategies, setStrategies] = useState();
@@ -27,7 +28,12 @@ export default function StrategiesList() {
       dataSource={strategies}
       renderItem={(item) => (
         <List.Item>
-          <Card title={item.strategy.asset} style={{ width: "400px" }}>
+          <Card title={item.strategy.asset} style={{ width: "100%" }} extra={<Button
+                type="secondary"
+                icon={<PoweroffOutlined />}
+                // loading={loadings[2]}
+                // onClick={() => this.enterLoading(2)}
+              />}>
             <p>Amount: {item.strategy.amount}</p>
             <p>Frequency: {item.strategy.frequency}</p>
             <p>Type: {item.strategy.type}</p>
