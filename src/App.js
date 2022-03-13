@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
-import Main from './components/Main'
-import StrategiesList from './components/StrategiesList';
-import CreateStrategy from './scenes/CreateStrategy';
 import { Layout } from 'antd'
+import Home from './scenes/Home';
+import Dashboard from './scenes/Dashboard'
+import CreateStrategy from './components/CreateStrategy';
 
 const { Header, Footer, Content } = Layout
 
@@ -35,17 +35,18 @@ const styles = {
 export default function App() {
   return (
     <>
-      <Layout color='grey' >
-        <Header style={styles.header} >
-        <h1 style={{ color: 'lime', padding: '0 0px 0px'}}>easyFi</h1>
+      <Layout color="grey">
+        <Header style={styles.header}>
+          <h1 style={{ color: "lime", padding: "0 0px 0px" }}>easyFi</h1>
         </Header>
         <Content>
           <Routes>
-            <Route path="/" element={<StrategiesList />} />
-            <Route path='/createStrategy' element={<CreateStrategy />} />
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create" element={<CreateStrategy />} />
           </Routes>
         </Content>
-        <Footer>&copy; 2022, Peter L.</Footer>
+        <Footer></Footer>
       </Layout>
     </>
   );

@@ -14,6 +14,24 @@ export default function StrategiesList() {
       .catch(alert);
   }, []);
 
+//   const [enabled, setEnabled] = useState();
+
+//   const handleEnabled = () => {
+//       fetch(`https://easyfi-project-pl.uc.r.appspot.com/strategies/${id}`, {
+//           method: "PATCH",
+//           headers: {
+//               "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({ enabled: enabled}),
+//       })
+//       .then((response) => response.json())
+//       .then(data => {
+//           setStrategies(data)
+//           setEnabled()
+//       })
+//       .catch(alert)
+//   }
+
   return (
     <List
       grid={{

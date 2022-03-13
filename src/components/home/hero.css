@@ -1,0 +1,58 @@
+.textBlock {
+  position: absolute;
+  background-size: cover;
+  /*   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./../../hero.jpeg); */
+  width: auto;
+  height: 100vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 100px;
+  padding-right: 100px;
+  line-height: 1.2;
+  opacity: 0.9;
+  /* color: aliceblue; */
+}
+.allText {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: 5vw;
+  text-align: center;
+  /* color: aliceblue; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.textHeader {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1;
+  text-transform: capitalize;
+  text-decoration-style: solid;
+  text-align: center;
+  font-weight: 300;
+  font-size: 5vw;
+}
+
+.button {
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 0.5em;
+  border: 0;
+  transition: all ease-in-out 0.4s;
+  color: lime;
+  background-color: #001529;
+  align-self: center;
+}
