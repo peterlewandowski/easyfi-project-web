@@ -3,7 +3,6 @@ import { Layout } from 'antd'
 import Home from './scenes/Home';
 import Dashboard from './scenes/Dashboard'
 import CreateStrategy from './components/CreateStrategy';
-
 const { Header, Footer, Content } = Layout
 
 const styles = {
