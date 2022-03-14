@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Button, Cascader } from 'antd'
+import React from "react";
+import { Cascader } from 'antd'
 
-export default function Step2({ assets, setAssets }) {
+export default function Step2({ frequencies, setFrequencies }) {
     const options = [
         { value: "Daily", label: "Daily"},
         { value: "Weekly", label: "Weekly"},
@@ -12,7 +12,7 @@ export default function Step2({ assets, setAssets }) {
         <Cascader
           placeholder="How often?"
           options={options}
-          onChange={(value) => setAssets(value)}
+          onChange={(value) => setFrequencies(value)}
         />
       );
 }
