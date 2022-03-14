@@ -26,16 +26,20 @@ export default function CreateStrategy() {
   
   const steps = [
     {
-      title: "I would like to invest in:",
+      title: "Choose type",
       content: <Step1 types={types} setTypes={setTypes} assets={assets} setAssets={setAssets} />,
     },
     {
-      title: "How frequently...(pick one)",
+      title: "Choose investment",
       // content: <Step2 />,
     },
     {
-      title: "How much per (day, week, month)?",
+      title: "How often...(pick one)",
       // content: <Step3 />,
+    },
+    {
+      title: "How much per (day, week, month)?",
+      // content: <Step4 />,
     },
   ];
   
