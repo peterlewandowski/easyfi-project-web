@@ -3,20 +3,20 @@ import { Steps, Button, message } from "antd";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
+import Step4 from "./steps/Step4";
+import SaveStrategyModal from "../scenes/SaveStrategyModal";
 import "./create.css";
 
 const { Step } = Steps;
 
 export default function CreateStrategy() {
-  
   const [step, setStep] = useState(0);
-  
+
   const [types, setTypes] = useState([]);
   const [assets, setAssets] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
   const [amounts, setAmounts] = useState(0);
-  
-  
+
   const userInput = {
     strategy: {
       type: types,
@@ -25,34 +25,38 @@ export default function CreateStrategy() {
       amount: amounts,
     },
   };
-  
+
+  console.log(userInput)
+
   const steps = [
     {
       title: "Choose type",
-      content: <Step1 types={types} setTypes={setTypes} assets={assets} setAssets={setAssets} />,
+      content: <Step1 types={types} setTypes={setTypes} />,
     },
     {
       title: "Choose investment",
-      content: <Step2 />,
+      content: <Step2 types={types} assets={assets} setAssets={setAssets} />,
     },
     {
       title: "Choose frequency",
-      content: <Step3 />,
+      content: (
+        <Step3 frequencies={frequencies} setFrequencies={setFrequencies} />
+      ),
     },
     {
       title: "How much per (day, week, month)?",
-      // content: <Step4 />,
+      content: <Step4 amounts={amounts} setAmounts={setAmounts} />,
     },
   ];
-  
+
   const next = () => {
     setStep(step + 1);
   };
-  
+
   const prev = () => {
     setStep(step - 1);
   };
-  
+
   const handleFormSubmit = () => {
     fetch("", {
       method: "POST",
@@ -61,15 +65,14 @@ export default function CreateStrategy() {
       },
       body: JSON.stringify(userInput),
     })
-    .then((response) => response.json())
-    .then()
-    .catch((err) => console.error(err));
+      .then((response) => response.json())
+      .then()
+      .catch((err) => console.error(err));
   };
-  
+
   useEffect(() => {
     console.log(amounts);
   }, [amounts]);
-  
 
   return (
     <>
@@ -82,22 +85,17 @@ export default function CreateStrategy() {
       <section className="steps-content">{steps[step].content}</section>
 
       <div className="steps-action">
-      {step > 0 && (
-          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-            Previous
-          </Button>
-        )}
         {step < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
             Next
           </Button>
         )}
         {step === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Done
+          <SaveStrategyModal />
+        )}
+        {step > 0 && (
+          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+            Previous
           </Button>
         )}
       </div>
