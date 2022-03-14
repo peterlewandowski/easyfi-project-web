@@ -52,7 +52,7 @@ export default function StrategiesList() {
                 // loading={loadings[2]}
                 // onClick={() => this.enterLoading(2)}
               />}>
-            <p>Amount: {item.strategy.amount}</p>
+            <p>Amount: ${item.strategy.amount}</p>
             <p>Frequency: {item.strategy.frequency}</p>
             <p>Type: {item.strategy.type}</p>
             <Button>Edit</Button>
