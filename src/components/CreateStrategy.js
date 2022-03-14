@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Steps, Button, message } from "antd";
 import Step1 from "./steps/Step1";
+import Step2 from "./steps/Step2";
+import Step3 from "./steps/Step3";
 import "./create.css";
 
 const { Step } = Steps;
@@ -31,11 +33,11 @@ export default function CreateStrategy() {
     },
     {
       title: "Choose investment",
-      // content: <Step2 />,
+      content: <Step2 />,
     },
     {
-      title: "How often...(pick one)",
-      // content: <Step3 />,
+      title: "Choose frequency",
+      content: <Step3 />,
     },
     {
       title: "How much per (day, week, month)?",
@@ -80,6 +82,11 @@ export default function CreateStrategy() {
       <section className="steps-content">{steps[step].content}</section>
 
       <div className="steps-action">
+      {step > 0 && (
+          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+            Previous
+          </Button>
+        )}
         {step < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
             Next
@@ -91,11 +98,6 @@ export default function CreateStrategy() {
             onClick={() => message.success("Processing complete!")}
           >
             Done
-          </Button>
-        )}
-        {step > 0 && (
-          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-            Previous
           </Button>
         )}
       </div>
