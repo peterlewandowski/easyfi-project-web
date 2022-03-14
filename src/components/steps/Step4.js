@@ -1,7 +1,7 @@
 import React from "react";
 import { Cascader } from 'antd'
 
-export default function Step4({ amounts, setAmounts }) {
+export default function Step4({ userInput, setUserInput }) {
     const options = [
         { value: 10, label: "$10"},
         { value: 20, label: "$20"},
@@ -14,8 +14,9 @@ export default function Step4({ amounts, setAmounts }) {
       return (
         <Cascader
           placeholder="How much?"
+          defaultValue={userInput.amount}
           options={options}
-          onChange={(value) => setAmounts(value)}
+          onChange={(value) => setUserInput({...userInput, amount: value})}
         />
       );
 }

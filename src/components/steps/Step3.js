@@ -1,7 +1,7 @@
 import React from "react";
 import { Cascader } from 'antd'
 
-export default function Step2({ frequencies, setFrequencies }) {
+export default function Step2({ userInput, setUserInput }) {
     const options = [
         { value: "Daily", label: "Daily"},
         { value: "Weekly", label: "Weekly"},
@@ -11,8 +11,9 @@ export default function Step2({ frequencies, setFrequencies }) {
       return (
         <Cascader
           placeholder="How often?"
+          defaultValue={userInput.frequency}
           options={options}
-          onChange={(value) => setFrequencies(value)}
+          onChange={(value) => setUserInput({...userInput, frequency: value})}
         />
       );
 }

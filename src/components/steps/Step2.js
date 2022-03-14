@@ -1,8 +1,10 @@
 import React from "react";
 import { Cascader } from 'antd'
 
-export default function Step2({ types, assets, setAssets }) {
-    const stocks = [
+export default function Step2({ userInput,setUserInput, types, assets }) {
+  console.log(userInput)
+
+  const stocks = [
         { value: "AAPL", label: "Apple Inc."},
         { value: "AMZN", label: "Amazon.com, Inc."},
         { value: "FB", label: "Meta Platforms, Inc."},
@@ -37,25 +39,26 @@ export default function Step2({ types, assets, setAssets }) {
         { value: "ALGO", label: "Algorand"},
       ];
 
-      const warning = ["*Type not chosen*"]
-
-      let assetsToDisplay = []
+      // let assetsToDisplay = []
 
       if(types === "Stock") {
-        assetsToDisplay = stocks
+        assets = stocks
       } else if ( types === "ETF") {
-        assetsToDisplay = etfs
+        assets = etfs
       } else if ( types === "Crypto") {
-        assetsToDisplay = cryptos
+        assets = cryptos
       } else {
-        assetsToDisplay = warning
+        assets = ["*Type not chosen*"]
       }
+
+
 
       return (
         <Cascader
           placeholder="Take your pick"
-          options={assetsToDisplay}
-          onChange={(value) => setAssets(value)}
+          defaultValue={userInput.asset} 
+          options={assets}
+          onChange={(value) => setUserInput({...userInput, asset: value})}
         />
       );
 }
