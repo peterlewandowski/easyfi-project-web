@@ -23,8 +23,6 @@ export default function CreateStrategy() {
       amount: amounts,
   })
 
-  console.log(userInput)
-
   const steps = [
     {
       title: "Choose type",
@@ -66,6 +64,10 @@ export default function CreateStrategy() {
       .then()
       .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    console.log(userInput);
+  }, [userInput]);
 
   // useEffect(() => {
   //   console.log(types);
