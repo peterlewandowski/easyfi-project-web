@@ -16,11 +16,13 @@ export default function CreateStrategy() {
   const [assets, setAssets] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
   const [amounts, setAmounts] = useState(0);
+  const [descriptions, setDescriptions] = useState([])
   const [userInput, setUserInput] = useState({
       type: types,
       asset: assets,
       frequency: frequencies,
       amount: amounts,
+      description: descriptions,
   })
 
   const steps = [
@@ -30,7 +32,7 @@ export default function CreateStrategy() {
     },
     {
       title: "Choose investment",
-      content: <Step2 userInput={userInput} setUserInput={setUserInput} types={types} assets={assets} setAssets={setAssets} />,
+      content: <Step2 userInput={userInput} setUserInput={setUserInput} types={types} assets={assets} />,
     },
     {
       title: "Choose frequency",
@@ -69,9 +71,7 @@ export default function CreateStrategy() {
     console.log(userInput);
   }, [userInput]);
 
-  // useEffect(() => {
-  //   console.log(types);
-  // }, [types]);
+  console.log(userInput.description)
 
   // useEffect(() => {
   //   console.log(assets);
