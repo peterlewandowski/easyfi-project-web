@@ -44,6 +44,7 @@ export default function YourStrategyModal( { userInput }) {
           <p>Amount: ${userInput.amount}</p>
           <p>Frequency: {userInput.frequency}</p>
           <p>Type: {userInput.type}</p>
+          <p>Description: {userInput.description}</p>
           {/* <Button>Edit</Button> */}
         </Card>
       </Modal>
