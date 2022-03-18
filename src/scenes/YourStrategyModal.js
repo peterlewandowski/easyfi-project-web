@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { Modal, Button, Card } from 'antd';
+// import { userContext } from .....
 
 export default function YourStrategyModal( { userInput }) {
+  // const {user} = useContext(UserContext)
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate()
+
+  // const handleSaveStrategy = (e) => {
+  //   navigate('./Dashboard')
+  // }
 
   const showModal = () => {
     setIsModalVisible(true);
   };
-
-  const handleOk = () => {
+  const handleSaveStrategy = (e) => {
     setIsModalVisible(false);
+    navigate('./Dashboard')
   };
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -24,7 +31,7 @@ export default function YourStrategyModal( { userInput }) {
       <Modal
         title="Your strategy:"
         visible={isModalVisible}
-        onOk={handleOk}
+        onOk={handleSaveStrategy}
         okText="Save Strategy"
         onCancel={handleCancel}
         cancelText="Edit"
