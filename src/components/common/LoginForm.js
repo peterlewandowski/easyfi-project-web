@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { SignupForm } from "./SignupForm";
+import SignupForm from "./SignupForm";
 import { UserContext } from "../../App";
 
 const firebaseConfig = {
@@ -82,11 +82,9 @@ export default function LoginForm({ type }) {
       .catch((err) => alert(err.message));
   };
 
-  const NormalLoginForm = () => {
     const onFinish = (values) => {
       console.log("Received values of form: ", values);
     };
-  };
 
   return (
     <>
