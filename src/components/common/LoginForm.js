@@ -28,7 +28,7 @@ export default function LoginForm({ type }) {
   const auth = getAuth(app);
   const { setUser, jwt, setJwt } = useContext(UserContext);
 
-  const handleLogin = (e) => {
+/*   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
@@ -50,7 +50,7 @@ export default function LoginForm({ type }) {
           });
       })
       .catch((err) => alert(err.message));
-  };
+  }; */
 
   const loginWithGoogle = (e) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ export default function LoginForm({ type }) {
           }}
           onFinish={onFinish}
         >
-{/*           <Form.Item
+          {/* <Form.Item
             name="username"
             rules={[
               {

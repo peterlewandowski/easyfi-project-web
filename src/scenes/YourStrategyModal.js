@@ -1,23 +1,37 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
-import { Modal, Button, Card } from 'antd';
-// import { userContext } from .....
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Modal, Button, Card } from "antd";
+import { userContext } from "../App";
 
-export default function YourStrategyModal( { userInput }) {
-  // const {user} = useContext(UserContext)
+export default function YourStrategyModal({ userInput }) {
+  const { user } = useContext(userContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  // const handleSaveStrategy = (e) => {
-  //   navigate('./Dashboard')
-  // }
+  useEffect(() => {
+    const data = userInput;
+    if (userInput.amounts.length === 0) {
+      navigate("/");
+      return;
+    }
+    fetch("https://easyfi-project-pl.uc.r.appspot.com/strategies", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then()
+      .catch((err) => console.error(err));
+  });
 
   const showModal = () => {
     setIsModalVisible(true);
   };
   const handleSaveStrategy = (e) => {
     setIsModalVisible(false);
-    navigate('./Dashboard')
+    navigate("./Dashboard");
   };
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -57,5 +71,4 @@ export default function YourStrategyModal( { userInput }) {
       </Modal>
     </>
   );
-};
-
+}

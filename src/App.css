@@ -1,12 +1,30 @@
 .ant-layout-header {
-  height: 50px;
   width: 400px;
-  padding: 0px;
-  background-color: darksalmon;
+  height: 80px;
+  padding: 15px;
+  background-color: #001529;
   line-height: normal;
+}
+
+.logo {
+  float: left;
+  height: 100%;
+  margin: 16px 24px 16px 0;
+  /* background: rgba(255, 255, 255, 0.3); */
 }
 
 h1 {
   text-align: left;
   color: white;
+}
+
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
 }
