@@ -86,6 +86,7 @@ export default function LoginForm({ type }) {
       console.log("Received values of form: ", values);
     };
 
+
   return (
     <>
       {formType === "login" ? (
@@ -97,7 +98,7 @@ export default function LoginForm({ type }) {
           }}
           onFinish={onFinish}
         >
-          <Form.Item
+{/*           <Form.Item
             name="username"
             rules={[
               {
@@ -141,10 +142,21 @@ export default function LoginForm({ type }) {
               type="primary"
               htmlType="submit"
               className="login-form-button"
+              onClick={() => handleClickSignUp}
             >
               Log in!
             </Button>
-            Or <a href="">register now!</a>
+            Or <a href="">Sign up now!</a>
+          </Form.Item> */}
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+              onClick={loginWithGoogle}
+            >
+              Log In with Google
+            </Button>
           </Form.Item>
         </Form>
       ) : (
