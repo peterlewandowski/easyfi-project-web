@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Steps, Button } from "antd";
+import { v4 as uuidv4 } from 'uuid'
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
@@ -9,6 +10,8 @@ import "./create.css";
 
 const { Step } = Steps;
 
+const generateUid = uuidv4()
+
 export default function CreateStrategy() {
   const [step, setStep] = useState(0);
 
@@ -17,12 +20,14 @@ export default function CreateStrategy() {
   const [frequencies, setFrequencies] = useState([]);
   const [amounts, setAmounts] = useState(0);
   const [descriptions, setDescriptions] = useState([])
+  const [uid, setUid] = useState(generateUid)
   const [userInput, setUserInput] = useState({
       type: types,
       asset: assets,
       frequency: frequencies,
       amount: amounts,
       description: descriptions,
+      userId: uid,
   })
 
   const steps = [
@@ -71,7 +76,9 @@ export default function CreateStrategy() {
     console.log(userInput);
   }, [userInput]);
 
-  console.log(userInput.description)
+  // console.log(userInput.description)
+
+  // console.log(uuidv4())
 
   // useEffect(() => {
   //   console.log(assets);
@@ -107,7 +114,7 @@ export default function CreateStrategy() {
           </Button>
         )}
         {step === steps.length - 1 && (
-          <YourStrategyModal userInput={userInput} />
+          <YourStrategyModal uid={uid} setUid={setUid} userInput={userInput} />
         )}
       </div>
     </>
