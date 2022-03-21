@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import { Modal, Button, Card } from 'antd';
+import React, { useState } from "react";
+import { Modal, Button, Card } from "antd";
+import { Navigate, useNavigate } from "react-router-dom";
+import { LoginPage } from "../pages/LoginPage";
 
-export default function YourStrategyModal( { userInput }) {
+export default function YourStrategyModal({ uid, setUid, userInput }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  const handleCancel = () => {
+  const handleOk = () => {
     setIsModalVisible(false);
+    navigate("/login");
   };
 
   return (
@@ -50,5 +54,4 @@ export default function YourStrategyModal( { userInput }) {
       </Modal>
     </>
   );
-};
-
+}
