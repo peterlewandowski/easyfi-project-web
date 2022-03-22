@@ -9,21 +9,25 @@ import "./create.css";
 
 const { Step } = Steps;
 
-export default function CreateStrategy() {
+export default function CreateStrategy({ userInput, setUserInput }) {
   const [step, setStep] = useState(0);
 
   const [types, setTypes] = useState([]);
   const [assets, setAssets] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
   const [amounts, setAmounts] = useState(0);
-  const [descriptions, setDescriptions] = useState([])
-  const [userInput, setUserInput] = useState({
+  const [descriptions, setDescriptions] = useState([]);
+
+  useEffect(() => {
+    setUserInput({
       type: types,
       asset: assets,
       frequency: frequencies,
       amount: amounts,
       description: descriptions,
-  })
+    });
+  }, [])
+
 
   const steps = [
     {
@@ -54,24 +58,13 @@ export default function CreateStrategy() {
     setStep(step - 1);
   };
 
-  const handleFormSubmit = () => {
-    fetch("", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userInput),
-    })
-      .then((response) => response.json())
-      .then()
-      .catch((err) => console.error(err));
-  };
+  // useEffect(() => {
+  //   console.log(userInput);
+  // }, [userInput]);
 
-  useEffect(() => {
-    console.log(userInput);
-  }, [userInput]);
+  // console.log(userInput.description)
 
-  console.log(userInput.description)
+  // console.log(uuidv4())
 
   // useEffect(() => {
   //   console.log(assets);

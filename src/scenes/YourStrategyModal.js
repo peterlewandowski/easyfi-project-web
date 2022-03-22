@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-import { Modal, Button, Card } from 'antd';
+import React, { useState } from "react";
+import { Modal, Button, Card } from "antd";
+import { useNavigate } from "react-router-dom";
 
-export default function YourStrategyModal( { userInput }) {
+export default function YourStrategyModal({ userInput }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  const handleCancel = () => {
+  const handleOk = () => {
     setIsModalVisible(false);
+    navigate("/login");
   };
 
   return (
@@ -32,23 +35,13 @@ export default function YourStrategyModal( { userInput }) {
         <Card
           title={userInput.asset}
           style={{ width: "100%" }}
-          // extra={
-          //   <Button
-          //     type="secondary"
-          //     // icon={<PoweroffOutlined />}
-          //     // loading={loadings[2]}
-          //     // onClick={() => this.enterLoading(2)}
-          //   />
-          // }
         >
           <p>Amount: ${userInput.amount}</p>
           <p>Frequency: {userInput.frequency}</p>
           <p>Type: {userInput.type}</p>
           <p>Description: {userInput.description}</p>
-          {/* <Button>Edit</Button> */}
         </Card>
       </Modal>
     </>
   );
-};
-
+}
