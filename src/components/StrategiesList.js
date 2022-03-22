@@ -5,13 +5,13 @@ import { PoweroffOutlined } from "@ant-design/icons";
 
 export default function StrategiesList({ userInput, setUserInput }) {
   const [userStrategies, setUserStrategies] = useState();
+  const [enabled, setEnabled] = useState();
   const { user } = useContext(UserContext);
 
   useEffect(() => {
     if (userInput && Object.keys(userInput).length > 0) {
       userInput.userId = user.uid;
-      console.log(userInput);
-      fetch(`https://easyfi-project-pl.uc.r.appspot.com`, {
+      fetch(`${process.env.REACT_APP_API_URL}/strategies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
       })
         .then(() => {
           const uid = user.uid;
-          fetch(`https://easyfi-project-pl.uc.r.appspot.com/${uid}`)
+          fetch(`${process.env.REACT_APP_API_URL}/strategies/${uid}`)
             .then((response) => response.json())
             .then((data) => {
               setUserStrategies(data);
@@ -31,7 +31,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
     } else {
       if (user.uid) {
         const uid = user.uid;
-        fetch(`https://easyfi-project-pl.uc.r.appspot.com/${uid}`)
+        fetch(`${process.env.REACT_APP_API_URL}/strategies/${uid}`)
           .then((response) => response.json())
           .then((data) => {
             setUserStrategies(data);
