@@ -1,36 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import { List, Card, Button, Space } from "antd";
-import { PoweroffOutlined } from '@ant-design/icons';
+import { PoweroffOutlined } from "@ant-design/icons";
 
-export default function StrategiesList() {
-  const [strategies, setStrategies] = useState();
+export default function StrategiesList({ userInput, setUserInput }) {
+  const [userStrategies, setUserStrategies] = useState();
+  const [enabled, setEnabled] = useState();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    fetch("https://easyfi-project-pl.uc.r.appspot.com/strategies")
-      .then((response) => response.json())
-      .then((data) => {
-        setStrategies(data);
+    if (userInput && Object.keys(userInput).length > 0) {
+      userInput.userId = user.uid;
+      console.log(userInput);
+      fetch(`http://localhost:3000/strategies`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInput),
       })
-      .catch(alert);
-  }, []);
-
-//   const [enabled, setEnabled] = useState();
-
-//   const handleEnabled = () => {
-//       fetch(`https://easyfi-project-pl.uc.r.appspot.com/strategies/${id}`, {
-//           method: "PATCH",
-//           headers: {
-//               "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({ enabled: enabled}),
-//       })
-//       .then((response) => response.json())
-//       .then(data => {
-//           setStrategies(data)
-//           setEnabled()
-//       })
-//       .catch(alert)
-//   }
+        .then(() => {
+          const uid = user.uid;
+          fetch(`http://localhost:3000/strategies/${uid}`)
+            .then((response) => response.json())
+            .then((data) => {
+              setUserStrategies(data);
+              setUserInput(null);
+            });
+        })
+        .catch((err) => console.error(err));
+    } else {
+      if (user.uid) {
+        const uid = user.uid;
+        fetch(`http://localhost:3000/strategies/${uid}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setUserStrategies(data);
+          })
+          .catch(alert);
+      }
+    }
+  }, [userInput, user.uid]);
 
   return (
     <List
@@ -43,18 +53,18 @@ export default function StrategiesList() {
         xl: 6,
         xxl: 3,
       }}
-      dataSource={strategies}
+      dataSource={userStrategies}
       renderItem={(item) => (
         <List.Item>
-          <Card title={item.strategy.asset} style={{ width: "100%" }} extra={<Button
-                type="secondary"
-                icon={<PoweroffOutlined />}
-                // loading={loadings[2]}
-                // onClick={() => this.enterLoading(2)}
-              />}>
+          <Card
+            title={item.strategy.asset}
+            style={{ width: "100%" }}
+            extra={<Button type="secondary" icon={<PoweroffOutlined />} />}
+          >
             <p>Amount: ${item.strategy.amount}</p>
             <p>Frequency: {item.strategy.frequency}</p>
             <p>Type: {item.strategy.type}</p>
+            <p>Description: {item.strategy.description}</p>
             <Button>Edit</Button>
           </Card>
         </List.Item>

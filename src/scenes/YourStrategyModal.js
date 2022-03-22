@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Button, Card } from "antd";
-import { Navigate, useNavigate } from "react-router-dom";
-import { LoginPage } from "../pages/LoginPage";
+import { useNavigate } from "react-router-dom";
 
-export default function YourStrategyModal({ uid, setUid, userInput }) {
+export default function YourStrategyModal({ userInput }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -36,20 +35,11 @@ export default function YourStrategyModal({ uid, setUid, userInput }) {
         <Card
           title={userInput.asset}
           style={{ width: "100%" }}
-          // extra={
-          //   <Button
-          //     type="secondary"
-          //     // icon={<PoweroffOutlined />}
-          //     // loading={loadings[2]}
-          //     // onClick={() => this.enterLoading(2)}
-          //   />
-          // }
         >
           <p>Amount: ${userInput.amount}</p>
           <p>Frequency: {userInput.frequency}</p>
           <p>Type: {userInput.type}</p>
           <p>Description: {userInput.description}</p>
-          {/* <Button>Edit</Button> */}
         </Card>
       </Modal>
     </>

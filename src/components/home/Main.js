@@ -1,9 +1,9 @@
 import React from "react";
 import CreateStrategy from "../CreateStrategy";
-export default function Main() {
+export default function Main({userInput, setUserInput}) {
   return (
     <div id="main" style={{ backgroundColor: "#F0FBF0" }}>
-      <CreateStrategy />;
+      <CreateStrategy userInput={userInput} setUserInput={setUserInput} />
     </div>
   );
 }

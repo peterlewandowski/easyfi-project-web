@@ -6,6 +6,3 @@ export const AnonRoute = ({ children }) => {
   const { user } = useContext(UserContext);
   return !!user ? <Navigate to="/dashboard" replace /> : children;
 };
-
-// !user -> bool
-// !!user -> bool

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Steps, Button } from "antd";
-import { v4 as uuidv4 } from 'uuid'
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
@@ -10,25 +9,25 @@ import "./create.css";
 
 const { Step } = Steps;
 
-const generateUid = uuidv4()
-
-export default function CreateStrategy() {
+export default function CreateStrategy({ userInput, setUserInput }) {
   const [step, setStep] = useState(0);
 
   const [types, setTypes] = useState([]);
   const [assets, setAssets] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
   const [amounts, setAmounts] = useState(0);
-  const [descriptions, setDescriptions] = useState([])
-  const [uid, setUid] = useState(generateUid)
-  const [userInput, setUserInput] = useState({
+  const [descriptions, setDescriptions] = useState([]);
+
+  useEffect(() => {
+    setUserInput({
       type: types,
       asset: assets,
       frequency: frequencies,
       amount: amounts,
       description: descriptions,
-      userId: uid,
-  })
+    });
+  }, [])
+
 
   const steps = [
     {
@@ -59,22 +58,9 @@ export default function CreateStrategy() {
     setStep(step - 1);
   };
 
-  const handleFormSubmit = () => {
-    fetch("", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userInput),
-    })
-      .then((response) => response.json())
-      .then()
-      .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {
-    console.log(userInput);
-  }, [userInput]);
+  // useEffect(() => {
+  //   console.log(userInput);
+  // }, [userInput]);
 
   // console.log(userInput.description)
 
@@ -114,7 +100,7 @@ export default function CreateStrategy() {
           </Button>
         )}
         {step === steps.length - 1 && (
-          <YourStrategyModal uid={uid} setUid={setUid} userInput={userInput} />
+          <YourStrategyModal userInput={userInput} />
         )}
       </div>
     </>
