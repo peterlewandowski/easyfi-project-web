@@ -9,7 +9,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (userInput && Object.keys(userInput).length > 0) {
+    if (userInput && Object.keys(userInput).length > 0 && userInput.type.length) {
       userInput.userId = user.uid;
       fetch(`${process.env.REACT_APP_API_URL}/strategies`, {
         method: "POST",
