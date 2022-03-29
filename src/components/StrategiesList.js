@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { List, Card, Button, Space } from "antd";
+import { List, Card, Button } from "antd";
 import { PoweroffOutlined } from "@ant-design/icons";
 
 export default function StrategiesList({ userInput, setUserInput }) {
   const [userStrategies, setUserStrategies] = useState();
-  const [enabled, setEnabled] = useState();
   const { user } = useContext(UserContext);
 
   useEffect(() => {
