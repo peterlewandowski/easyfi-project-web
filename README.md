@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+
+<h1 align="center">
+<br>
+<a href="https://easyfi.me/"><img src="src/easyfi-logo.png" alt="easyfi" width="200"></a>
+<br>
+Investment Planning. Made Easy
+<br>
+</h1>
+
+<h4 align="center">A minimal investment planning application built with <a href="https://reactjs.org/" target="_blank">ReactJS</a>.</h4>
+
+<p align="center">
+  <a href="#description">Description</a> •
+  <a href="#roadmap">Roadmap</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#stack">Tech Stack</a> •
+  <a href="#project-status">Project Status</a> •
+</p>
+
+![screenshot](easyfi-getstarted.gif)
+
+## Description
+This project was built to help users get started with investing. easyFi application makes it possible to create your own simple investment plans.
+
+#### Features 
+- Build your own actionable strategies
+- Small, guided steps
+- Make it fun, save/edit your strategies (LoginWithGoogle)
+
+![screenshot](easyfi-dashboard.gif)
+
+## Roadmap
+
+- Edit/Delete existing strategy
+- Filter strategies by asset type
+- Organize strategies into custom portfolios
+- Display current asset price
+
+## How to Use
+
+<div align="left">
+<h3>Visit
+<a href="https://easyfi.me/">https://easyfi.me/</a>
+</h3><br>
+</div>
+
+## Stack (F.E.R.N)
+
+- [Firestore](https://firebase.google.com/)
+- [ExpressAPI](https://expressjs.com/) + [GC App Engine](https://cloud.google.com/appengine)
+- [ReactJS](https://reactjs.org/)
+- [Node.js](https://nodejs.org/en/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project Status
 
-In the project directory, you can run:
+This is a personal project built as part of the Boca Code Fullstack Software Engineering Career Course (March '22). It fulfilled all necessary requirements for graduation including:
 
-### `npm start`
+1. Must solve a problem
+2. Own database
+3. Own API (https://github.com/peterlewandowski/easyfi-project-api)
+4. Web frontend in React
+5. Fully deployed to the cloud
+6. User must be able to INTERACT and make a visible CHANGE to the database
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Bonus:
+- User login
+- Custom README
+- Mobile responsive
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Next Steps: 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Continue testing, add upcoming features (<a href="#roadmap">Roadmap</a>) to hone Fullstack developer skill set.
