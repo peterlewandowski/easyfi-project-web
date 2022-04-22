@@ -13,7 +13,7 @@ Investment Planning. Made Easy
   <a href="#description">Description</a> •
   <a href="#roadmap">Roadmap</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#stack">Tech Stack</a> •
+  <a href="#tech-stack">Tech Stack</a> •
   <a href="#project-status">Project Status</a> •
 </p>
 
@@ -44,7 +44,7 @@ This project was built to help users get started with investing. easyFi applicat
 </h3><br>
 </div>
 
-## Stack (F.E.R.N)
+## Tech Stack (F.E.R.N)
 
 - [Firestore](https://firebase.google.com/)
 - [ExpressAPI](https://expressjs.com/) + [GC App Engine](https://cloud.google.com/appengine)
