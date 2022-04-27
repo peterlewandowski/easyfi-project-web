@@ -12,12 +12,12 @@ export const LoginPage = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   const login = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        setUser(result.user);
-        navigate("/dashboard");
+    signInWithPopup(auth, provider) // function takes in auth and provider from firebase
+      .then((result) => { // returns the result and
+        setUser(result.user); // setUser sets the result to the user property
+        navigate("/dashboard"); // then navigates to dashboard
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => alert(error.message)); // if error is returned then display alert with the error in the message
   };
 
   const warning = () => {
