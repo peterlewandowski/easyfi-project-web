@@ -14,7 +14,7 @@ export const LoginPage = () => {
   const login = () => {
     signInWithPopup(auth, provider) // function takes in auth and provider from firebase
       .then((result) => { // returns the result and
-        setUser(result.user); // setUser sets the result value (the uuid) to the user property
+        setUser(result.user); // setUser is updated with result value (the uuid) to the user property
         navigate("/dashboard"); // then navigates to dashboard
       })
       .catch((error) => alert(error.message)); // if error is returned then display alert with the error in the message
