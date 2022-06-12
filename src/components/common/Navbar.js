@@ -56,19 +56,6 @@ export default function Navbar() {
         />
       </div>
       <div>{navButtons(user)}</div>
-      {/* {!user && (
-        <span>
-          <Button type="primary" onClick={handleClickLogin}>
-            Sign in!
-          </Button>
-        </span>
-      )}
-      {user && (
-        <span>
-          <Button onClick={() => navigate("/dashboard")}>Dashboard</Button>
-          <Button onClick={handleLogout}>Sign Out</Button>
-        </span>
-      )} */}
     </nav>
   );
 }
