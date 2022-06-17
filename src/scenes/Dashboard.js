@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import StrategiesList from "../components/StrategiesList";
+import { InputContext } from "../context/InputContext";
 
-export default function Dashboard( { userInput, setUserInput }) {
+export default function Dashboard() {
+  const {userInput, setUserInput} = useContext(InputContext);
   const navigate = useNavigate();
   
   const handleClick = () => {

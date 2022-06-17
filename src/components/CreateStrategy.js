@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Steps, Button } from "antd";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
@@ -6,12 +6,13 @@ import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import YourStrategyModal from "../scenes/YourStrategyModal";
 import "./create.css";
+import { InputContext } from "../context/InputContext";
 
 const { Step } = Steps;
 
-export default function CreateStrategy({ userInput, setUserInput }) {
+export default function CreateStrategy() {
+  const { userInput, setUserInput } = useContext(InputContext);
   const [step, setStep] = useState(0);
-
   const [types, setTypes] = useState([]);
   const [assets, setAssets] = useState([]);
   const [frequencies, setFrequencies] = useState([]);
@@ -26,27 +27,52 @@ export default function CreateStrategy({ userInput, setUserInput }) {
       amount: amounts,
       description: descriptions,
     });
-  }, [])
-
+  }, []);
 
   const steps = [
     {
       title: "Choose type",
-      content: <Step1 userInput={userInput} setUserInput={setUserInput} types={types} setTypes={setTypes} />,
+      content: (
+        <Step1
+          userInput={userInput}
+          setUserInput={setUserInput}
+          types={types}
+          setTypes={setTypes}
+        />
+      ),
     },
     {
       title: "Choose investment",
-      content: <Step2 userInput={userInput} setUserInput={setUserInput} types={types} assets={assets} />,
+      content: (
+        <Step2
+          userInput={userInput}
+          setUserInput={setUserInput}
+          types={types}
+          assets={assets}
+        />
+      ),
     },
     {
       title: "Choose frequency",
       content: (
-        <Step3 userInput={userInput} setUserInput={setUserInput} frequencies={frequencies} setFrequencies={setFrequencies} />
+        <Step3
+          userInput={userInput}
+          setUserInput={setUserInput}
+          frequencies={frequencies}
+          setFrequencies={setFrequencies}
+        />
       ),
     },
     {
       title: "How much per (day, week, month)?",
-      content: <Step4 userInput={userInput} setUserInput={setUserInput} amounts={amounts} setAmounts={setAmounts} />,
+      content: (
+        <Step4
+          userInput={userInput}
+          setUserInput={setUserInput}
+          amounts={amounts}
+          setAmounts={setAmounts}
+        />
+      ),
     },
   ];
 
@@ -57,26 +83,6 @@ export default function CreateStrategy({ userInput, setUserInput }) {
   const prev = () => {
     setStep(step - 1);
   };
-
-  // useEffect(() => {
-  //   console.log(userInput);
-  // }, [userInput]);
-
-  // console.log(userInput.description)
-
-  // console.log(uuidv4())
-
-  // useEffect(() => {
-  //   console.log(assets);
-  // }, [assets]);
-
-  // useEffect(() => {
-  //   console.log(frequencies);
-  // }, [frequencies]);
-
-  // useEffect(() => {
-  //   console.log(amounts);
-  // }, [amounts]);
 
   return (
     <>

@@ -7,7 +7,7 @@ export default function Home({userInput, setUserInput}) {
     return (
         <>
         <Hero />
-        <Main userInput={userInput} setUserInput={setUserInput} />
+        <Main />
         </>
     )
 }
