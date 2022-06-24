@@ -77,7 +77,11 @@ export default function CreateStrategy() {
   ];
 
   const next = () => {
-    setStep(step + 1);
+    if (types.length !== 0) {
+      setStep(step + 1);
+    } else {
+      alert("Choose an investment type to continue")
+    }
   };
 
   const prev = () => {
