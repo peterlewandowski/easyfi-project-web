@@ -6,6 +6,8 @@ import EditStrategyCard from "../scenes/EditStrategyCard";
 
 export default function StrategiesList({ userInput, setUserInput }) {
   const [userStrategies, setUserStrategies] = useState();
+  // const [userStrategy, setUserStrategy] = useState();
+  const [currentStrategy, setCurrentStrategy] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { user } = useContext(UserContext);
 
@@ -30,6 +32,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
             .then((data) => {
               setUserStrategies(data);
               setUserInput(null);
+
             });
         })
         .catch((err) => console.error(err));
@@ -40,23 +43,28 @@ export default function StrategiesList({ userInput, setUserInput }) {
           .then((response) => response.json())
           .then((data) => {
             setUserStrategies(data);
+            console.log(userStrategies);
           })
           .catch(alert);
       }
     }
   }, [userInput, user.uid]);
 
-  const showModal = () => {
+  const showModal = (userStrategy) => {
+    setCurrentStrategy(userStrategy);
     setIsModalVisible(true);
   };
+  console.log(currentStrategy)
 
   const handleOk = () => {
     setIsModalVisible(false);
   };
 
   const handleCancel = () => {
+    setCurrentStrategy(null)
     setIsModalVisible(false);
   };
+
 
   return (
     <>
@@ -72,7 +80,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
         }}
         dataSource={userStrategies}
         renderItem={(item) => (
-          <List.Item key={item.created} >
+          <List.Item key={item.created}>
             <Card
               title={item.strategy.asset}
               style={{ width: "100%" }}
@@ -84,24 +92,18 @@ export default function StrategiesList({ userInput, setUserInput }) {
               <p>Description: {item.strategy.description}</p>
               <p>Created: {item.created}</p>
               <p>ID: {item.id}</p>
-              <Button onClick={showModal}>Edit</Button> {/* button needs to fetch the data for the one strategy that needs to be updated */}
-              <Modal
-                title="Edit your strategy"
-                visible={isModalVisible}
-                onCancel={handleCancel}
-                onOk={handleOk}
-              >
-                <Card title={item.strategy.asset} style={{ width: "100%" }}>
-                  <p>Amount: ${item.strategy.amount}</p>
-                  <p>Frequency: {item.strategy.frequency}</p>
-                  <p>Type: {item.strategy.type}</p>
-                  <p>Description: {item.strategy.description}</p>
-                </Card>
-              </Modal>
+              <Button onClick={() => showModal(item)}>Edit</Button>
             </Card>
           </List.Item>
         )}
       />
+      <Modal
+        title="Edit your strategy"
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        onOk={handleOk}
+      >{currentStrategy && <EditStrategyCard currentStrategy={currentStrategy} />}
+      </Modal>
     </>
   );
 }
