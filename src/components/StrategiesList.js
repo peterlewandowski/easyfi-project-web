@@ -6,7 +6,6 @@ import EditStrategyCard from "../scenes/EditStrategyCard";
 
 export default function StrategiesList({ userInput, setUserInput }) {
   const [userStrategies, setUserStrategies] = useState();
-  // const [userStrategy, setUserStrategy] = useState();
   const [currentStrategy, setCurrentStrategy] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { user } = useContext(UserContext);
@@ -43,7 +42,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
           .then((response) => response.json())
           .then((data) => {
             setUserStrategies(data);
-            console.log(userStrategies);
+            // console.log(userStrategies);
           })
           .catch(alert);
       }
