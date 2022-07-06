@@ -53,7 +53,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
     setCurrentStrategy(userStrategy);
     setIsModalVisible(true);
   };
-  console.log(currentStrategy)
+  // console.log(currentStrategy)
 
   const handleOk = () => {
     setIsModalVisible(false);
