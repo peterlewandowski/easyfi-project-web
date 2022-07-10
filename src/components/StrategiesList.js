@@ -13,8 +13,8 @@ export default function StrategiesList({ userInput, setUserInput }) {
   useEffect(() => {
     if (
       userInput &&
-      Object.keys(userInput).length > 0 &&
-      userInput.type.length
+      Object.keys(userInput).length > 0 
+      && userInput.amount.length
     ) {
       userInput.userId = user.uid;
       fetch(`${process.env.REACT_APP_API_URL}/strategies`, {
