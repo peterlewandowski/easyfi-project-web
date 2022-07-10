@@ -9,8 +9,7 @@ export default function EditStrategyCard({ currentStrategy }) {
           <p>Frequency: {currentStrategy.strategy.frequency}</p>
           <p>Type: {currentStrategy.strategy.type}</p>
           <p>Description: {currentStrategy.strategy.description}</p>
-          <p>Created: {currentStrategy.created}</p>
-          <p>ID: {currentStrategy.id}</p>
+          <p>Created: {(new Date(currentStrategy.createdAt._seconds * 1000)).toLocaleDateString()}</p>
         </Card>
     </>
   );

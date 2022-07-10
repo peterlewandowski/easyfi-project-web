@@ -29,9 +29,9 @@ export default function StrategiesList({ userInput, setUserInput }) {
           fetch(`${process.env.REACT_APP_API_URL}/strategies/${uid}`)
             .then((response) => response.json())
             .then((data) => {
+              data = data.sort((a,b) => b.timestamp - a.timestamp)
               setUserStrategies(data);
               setUserInput(null);
-
             });
         })
         .catch((err) => console.error(err));
@@ -41,6 +41,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
         fetch(`${process.env.REACT_APP_API_URL}/strategies/${uid}`)
           .then((response) => response.json())
           .then((data) => {
+            data = data.sort((a,b) => b.timestamp - a.timestamp)
             setUserStrategies(data);
             // console.log(userStrategies);
           })
@@ -79,7 +80,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
         }}
         dataSource={userStrategies}
         renderItem={(item) => (
-          <List.Item key={item.created}>
+          <List.Item key={item.id}>
             <Card
               title={item.strategy.asset}
               style={{ width: "100%" }}
@@ -89,8 +90,7 @@ export default function StrategiesList({ userInput, setUserInput }) {
               <p>Frequency: {item.strategy.frequency}</p>
               <p>Type: {item.strategy.type}</p>
               <p>Description: {item.strategy.description}</p>
-              <p>Created: {item.created}</p>
-              <p>ID: {item.id}</p>
+              <p>Created: {(new Date(item.createdAt._seconds * 1000)).toLocaleDateString()}</p>
               <Button onClick={() => showModal(item)}>Edit</Button>
             </Card>
           </List.Item>
