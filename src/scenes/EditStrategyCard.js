@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "antd";
+import CreateStrategy from "../components/CreateStrategy";
 
 export default function EditStrategyCard({ currentStrategy }) {
   return (
@@ -11,6 +12,7 @@ export default function EditStrategyCard({ currentStrategy }) {
           <p>Description: {currentStrategy.strategy.description}</p>
           <p>Created: {(new Date(currentStrategy.createdAt._seconds * 1000)).toLocaleDateString()}</p>
         </Card>
+        <CreateStrategy currentStrategy={currentStrategy} />
     </>
   );
 }
