@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Cascader } from "antd";
 
 const stocks = [
@@ -36,8 +36,14 @@ const cryptos = [
   { value: "ALGO", label: "Algorand" },
 ];
 
-export default function Step2({ userInput, setUserInput, types, assets }) {
+export default function Step2({ userInput, setUserInput, types, assets, setAssets, currentStrategy }) {
 
+  useEffect(() => {
+    if (currentStrategy) {
+      setAssets(currentStrategy.strategy.asset)
+    }
+  }, [currentStrategy]);
+  
   const handleChange = (value, assets) => {
     setUserInput({ ...userInput, asset: value, description: assets.find(assets => assets.value === value[0]).label })
   }
@@ -54,8 +60,8 @@ export default function Step2({ userInput, setUserInput, types, assets }) {
 
   return (
     <Cascader
-      placeholder="Take your pick"
-      defaultValue={userInput.asset}
+      placeholder={currentStrategy.strategy.asset || "Take your pick"}
+      defaultValue={currentStrategy.strategy.asset || userInput.asset}
       options={assets}
       onChange={handleChange}
     />

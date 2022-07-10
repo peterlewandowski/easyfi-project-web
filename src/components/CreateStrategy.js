@@ -10,7 +10,7 @@ import { InputContext } from "../context/InputContext";
 
 const { Step } = Steps;
 
-export default function CreateStrategy() {
+export default function CreateStrategy({ currentStrategy }) {
   const { userInput, setUserInput } = useContext(InputContext);
   const [step, setStep] = useState(0);
   const [types, setTypes] = useState([]);
@@ -20,14 +20,15 @@ export default function CreateStrategy() {
   const [descriptions, setDescriptions] = useState([]);
 
   useEffect(() => {
-    setUserInput({
-      type: types,
-      asset: assets,
-      frequency: frequencies,
-      amount: amounts,
-      description: descriptions,
-    });
+      setUserInput({
+        type: types,
+        asset: assets,
+        frequency: frequencies,
+        amount: amounts,
+        description: descriptions,
+      });
   }, []);
+  console.log(currentStrategy)
 
   const steps = [
     {
@@ -38,6 +39,7 @@ export default function CreateStrategy() {
           setUserInput={setUserInput}
           types={types}
           setTypes={setTypes}
+          currentStrategy={currentStrategy}
         />
       ),
     },
@@ -49,6 +51,8 @@ export default function CreateStrategy() {
           setUserInput={setUserInput}
           types={types}
           assets={assets}
+          setAssets={setAssets}
+          currentStrategy={currentStrategy}
         />
       ),
     },
@@ -60,6 +64,7 @@ export default function CreateStrategy() {
           setUserInput={setUserInput}
           frequencies={frequencies}
           setFrequencies={setFrequencies}
+          currentStrategy={currentStrategy}
         />
       ),
     },
@@ -71,6 +76,7 @@ export default function CreateStrategy() {
           setUserInput={setUserInput}
           amounts={amounts}
           setAmounts={setAmounts}
+          currentStrategy={currentStrategy}
         />
       ),
     },
@@ -80,7 +86,7 @@ export default function CreateStrategy() {
     if (types.length !== 0) {
       setStep(step + 1);
     } else {
-      alert("Choose an investment type to continue")
+      alert("Choose an investment type to continue");
     }
   };
 
@@ -110,7 +116,7 @@ export default function CreateStrategy() {
           </Button>
         )}
         {step === steps.length - 1 && (
-          <YourStrategyModal userInput={userInput} />
+          <YourStrategyModal userInput={userInput} currentStrategy={currentStrategy} />
         )}
       </div>
     </>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Card } from "antd";
 import { useNavigate } from "react-router-dom";
 
-export default function YourStrategyModal({ userInput }) {
+export default function YourStrategyModal({ userInput, currentStrategy }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -33,13 +33,13 @@ export default function YourStrategyModal({ userInput }) {
         cancelText="Edit"
       >
         <Card
-          title={userInput.asset}
+          title={currentStrategy.strategy.asset || userInput.asset}
           style={{ width: "100%" }}
         >
-          <p>Amount: ${userInput.amount}</p>
-          <p>Frequency: {userInput.frequency}</p>
-          <p>Type: {userInput.type}</p>
-          <p>Description: {userInput.description}</p>
+          <p>Amount: ${currentStrategy.strategy.amount || userInput.amount}</p>
+          <p>Frequency: {currentStrategy.strategy.frequency || userInput.frequency}</p>
+          <p>Type: {currentStrategy.strategy.frequency || userInput.type}</p>
+          <p>Description: {currentStrategy.strategy.frequency || userInput.description}</p>
         </Card>
       </Modal>
     </>

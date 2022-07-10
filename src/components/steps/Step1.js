@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Radio } from "antd";
 
-export default function Step1({ types, setTypes, userInput, setUserInput }) {
-  // const [value, setValue] = useState();
+export default function Step1({
+  types,
+  setTypes,
+  userInput,
+  setUserInput,
+  currentStrategy,
+}) {
+  useEffect(() => {
+    if (currentStrategy) {
+      setTypes(currentStrategy.strategy.type);
+    }
+  }, [currentStrategy]);
 
   const onChange = (e) => {
-    // console.log("radio checked", e.target.value);
     setTypes(e.target.value);
     setUserInput({ ...userInput, type: e.target.value });
   };
